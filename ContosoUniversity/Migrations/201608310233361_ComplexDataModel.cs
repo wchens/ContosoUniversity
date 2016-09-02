@@ -7,6 +7,7 @@ namespace ContosoUniversity.Migrations
     {
         public override void Up()
         {
+            /*
             CreateTable(
                 "dbo.Department",
                 c => new
@@ -20,7 +21,7 @@ namespace ContosoUniversity.Migrations
                 .PrimaryKey(t => t.DepartmentID)
                 .ForeignKey("dbo.Instructor", t => t.InstructorID)
                 .Index(t => t.InstructorID);
-            
+           
             CreateTable(
                 "dbo.Instructor",
                 c => new
@@ -68,10 +69,12 @@ namespace ContosoUniversity.Migrations
             AlterColumn("dbo.Student", "Firstname", c => c.String(nullable: false, maxLength: 50));
             CreateIndex("dbo.Course", "DepartmentID");
             AddForeignKey("dbo.Course", "DepartmentID", "dbo.Department", "DepartmentID", cascadeDelete: true);
+             */ 
         }
         
         public override void Down()
         {
+            /*
             DropForeignKey("dbo.CourseInstructor", "InstructorID", "dbo.Instructor");
             DropForeignKey("dbo.CourseInstructor", "CourseID", "dbo.Course");
             DropForeignKey("dbo.Course", "DepartmentID", "dbo.Department");
@@ -90,6 +93,7 @@ namespace ContosoUniversity.Migrations
             DropTable("dbo.OfficeAssignment");
             DropTable("dbo.Instructor");
             DropTable("dbo.Department");
+            */
         }
     }
 }

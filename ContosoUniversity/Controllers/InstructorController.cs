@@ -150,7 +150,7 @@ namespace ContosoUniversity.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var instructorToUpdate = db.Instructors
-            .Include(i => i.OfficeAssignment) .Include(i => i.Courses)
+            .Include(i => i.OfficeAssignment).Include(i => i.Courses)
             .Where(i => i.ID == id)
             .Single();
             
@@ -187,7 +187,8 @@ namespace ContosoUniversity.Controllers
             } 
             
             var selectedCoursesHS = new HashSet<string>(selectedCourses); 
-            var instructorCourses = new HashSet<int>(instructorToUpdate.Courses.Select(c => c.CourseID)); 
+            var instructorCourses = new HashSet<int>
+                (instructorToUpdate.Courses.Select(c => c.CourseID)); 
             foreach (var course in db.Courses) 
             { 
                 if (selectedCoursesHS.Contains(course.CourseID.ToString())) 
@@ -227,10 +228,21 @@ namespace ContosoUniversity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Instructor instructor = db.Instructors.Include(i => i.OfficeAssignment).Where(i => i.ID == id).Single();
+            Instructor instructor = db.Instructors
+                .Include(i => i.OfficeAssignment)
+                .Where(i => i.ID == id)
+                .Single();
+
             instructor.OfficeAssignment = null;
             db.Instructors.Remove(instructor);
-            var department = db.Departments.Where(d => d.InstructorID == id).SingleOrDefault(); if (department != null) { department.InstructorID = null; }
+
+            var department = db.Departments
+                .Where(d => d.InstructorID == id)
+                .SingleOrDefault(); 
+            if (department != null) 
+            { 
+                department.InstructorID = null; 
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

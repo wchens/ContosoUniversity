@@ -7,12 +7,16 @@ namespace ContosoUniversity.Migrations
     {
         public override void Up()
         {
+            /*
             RenameColumn(table: "dbo.Student", name: "FirstMidName", newName: "Firstname");
+             */
         }
         
         public override void Down()
         {
-            RenameColumn(table: "dbo.Student", name: "Firstname", newName: "FirstMidName");
+            /*
+             RenameColumn(table: "dbo.Student", name: "Firstname", newName: "FirstMidName");
+             */
         }
     }
 }

@@ -7,6 +7,7 @@ namespace ContosoUniversity.Migrations
     {
         public override void Up()
         {
+            /*
             CreateTable(
                 "dbo.Course",
                 c => new
@@ -17,6 +18,7 @@ namespace ContosoUniversity.Migrations
                     })
                 .PrimaryKey(t => t.CourseID);
             
+
             CreateTable(
                 "dbo.Enrollment",
                 c => new
@@ -42,11 +44,12 @@ namespace ContosoUniversity.Migrations
                         EnrollmentDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
-            
+            */
         }
         
         public override void Down()
         {
+            /*
             DropForeignKey("dbo.Enrollment", "StudentID", "dbo.Student");
             DropForeignKey("dbo.Enrollment", "CourseID", "dbo.Course");
             DropIndex("dbo.Enrollment", new[] { "StudentID" });
@@ -54,6 +57,7 @@ namespace ContosoUniversity.Migrations
             DropTable("dbo.Student");
             DropTable("dbo.Enrollment");
             DropTable("dbo.Course");
+             */
         }
     }
 }
